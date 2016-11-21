@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script is run after your app is installed.
+
+# Set the path to your application
+APPLICATION_ROOT="/Applications/Omnis Studio Runtime 8.0.2 x64.app"
+
+# Setup permissions
+sudo chmod -R a+rw "${APPLICATION_ROOT}/Contents/MacOS/startup"
+sudo chmod -R a+rw "${APPLICATION_ROOT}/Contents/MacOS/icons"
+sudo chmod -R a+rw "${APPLICATION_ROOT}/Contents/MacOS/iconsets"
+sudo chmod -R a+rw "${APPLICATION_ROOT}/Contents/MacOS/local"
+sudo chmod -R a+rw "${APPLICATION_ROOT}/Contents/MacOS/omnispdf"
+sudo chmod -R a+rw "${APPLICATION_ROOT}/Contents/MacOS/studio"
+
+# For Brainy Data's PDFDevice
+sudo chmod a+rw ../MacOS
