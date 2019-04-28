@@ -14,7 +14,7 @@ Prepare a copy of your application in a folder other than `/Applications`. The i
 
 Download or clone a copy of this repository. For example, this command will clone a copy of the project to a `omnis-pkg` folder in `~/Documents`.
 ```bash
-git clone git@github.com:barkingfoodog/omnis-pkg.git ~/Documents/omnis-pkg
+git clone https://github.com/barkingfoodog/omnis-pkg.git ~/Documents/omnis-pkg
 ```
 
 Rename the `Omnis.pkgproj` file to match your application. Open this file with Packages and edit these settings:
