@@ -89,6 +89,8 @@ productsign --sign "Developer ID Installer: [Your company name]" "[Your package]
 spctl -a -v --type install "[Your packages].pkg"
 ```
 
+A recent addition to Apple's security flow is the concept of notarizing your software. You can notarize your installer using the `xcrun` command line tool by following [this guide](https://developer.apple.com/documentation/security/notarizing_your_app_before_distribution/customizing_the_notarization_workflow?language=objc).
+
 #
 # Contributions
 Pull requests are most welcome!
