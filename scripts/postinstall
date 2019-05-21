@@ -1,16 +1,30 @@
 #!/usr/bin/env bash
 # This script is run after your app is installed.
+APP_NAME="Omnis Studio Runtime 10.0" # Customize with your app name
+COMANY_NAME="Omnis" # Customize with the CORE_RES_25599 entry from Contents/Resources/English.lproj/Localizable.strings
 
-# Set the path to your application
-APPLICATION_ROOT="/Applications/Omnis Studio Runtime 8.0.2 x64.app"
+APP_ROOT="/Applications/${APP_NAME}.app"
+COMPANY_APP_SUPPORT="${HOME}/Library/Application Support/${COMANY_NAME}"
+APP_SUPPORT="${COMPANY_APP_SUPPORT}/${APP_NAME}"
 
 # Setup permissions
-sudo chmod -R a+rw "${APPLICATION_ROOT}/Contents/MacOS/startup"
-sudo chmod -R a+rw "${APPLICATION_ROOT}/Contents/MacOS/icons"
-sudo chmod -R a+rw "${APPLICATION_ROOT}/Contents/MacOS/iconsets"
-sudo chmod -R a+rw "${APPLICATION_ROOT}/Contents/MacOS/local"
-sudo chmod -R a+rw "${APPLICATION_ROOT}/Contents/MacOS/omnispdf"
-sudo chmod -R a+rw "${APPLICATION_ROOT}/Contents/MacOS/studio"
+sudo chmod -R a+r "${APP_ROOT}/Contents/MacOS/"
 
-# For Brainy Data's PDFDevice
-sudo chmod a+rw ../MacOS
+# Un-comment if you use BrainyPDF
+# sudo chmod a+rw ../MacOS
+
+# Frameworks
+sudo chmod -R 755 "${APP_ROOT}/Contents/Frameworks/*.dylib"
+
+# Remove existing app support folder
+if [ -d "${APP_SUPPORT}" ]; then
+	rm -r "${APP_SUPPORT}"
+fi
+
+# Pre-create new app support folder
+if [ ! -d "${COMPANY_APP_SUPPORT}" ]; then
+	mkdir -p "${COMPANY_APP_SUPPORT}"
+fi
+
+cp -r "${APP_ROOT}/Contents/MacOS/firstruninstall" "${APP_SUPPORT}"
+sudo chown -R "${USER}" "${COMPANY_APP_SUPPORT}"
