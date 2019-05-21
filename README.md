@@ -42,7 +42,7 @@ Change the permissions on the app to:
 
 Leave the Bit unset for all.
 
-Edit the `postinstall` script and set `APPLICATION_ROOT` to the path to your application. This will allow the script to set permissions on your app properly. 
+Edit the `postinstall` script and set `APP_NAME` and `COMPANY_NAME` for your application. This will allow the script to set permissions and update the user's application data properly. 
 
 ## Optional customizations
 ### preinstall script
